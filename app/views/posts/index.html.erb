@@ -11,8 +11,6 @@
     <%= link_to("最近読んだ一冊を投稿","/posts/new", {class: "btn-gradient-3d-simple"}) %>
   </div>
 </div>
-
-<%= link_to "投稿画面へ", posts_new_path %>
 <% @posts.each do |post| %>
 <p>
   <%= link_to(post.title, "/posts/#{post.id}")%>
