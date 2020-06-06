@@ -1,20 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MyBooks</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <title>MyBooks</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- favicon -->
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <!-- FontAwesome5 -->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
-  <body>
-    <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-      Tooltip on top
-    </button>
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <div class="top-wrapper">
+    <div class="top-message flex space">
+      <div class="top-left">
+        <% crrent_user = User.find_by(id: session[:user_id]) %>
+        <% if crrent_user %>
+        <p class="smaile">
+          こんにちは、<%= link_to("/users/#{@current_user.id}/show",{class: "current-user"}) do %>
+          <%= @current_user.name %>
+          <%end%>さん！
+        </p>
+        <% else %><p class="smile">こんにちは、ゲストさん！</p>
+        <% end %>
+      </div>
+      <ul class="top-right">
+        <% if @current_user %>
+        <li>
+          <%= link_to("新規投稿", "/posts/new", {class: "top-menu new-post"}) %>
+        </li>
+        <li>
+          <%= link_to("ログアウト", "/logout", {class: "top-menu top-logout",method: :post}) %>
+        </li>
+        <% else %>
+        <li>
+          <%= link_to("ログイン","/login", {class: "top-menu login"}) %>
+        </li>
+        <li>
+          <%= link_to("新規ユーザー登録", "/signup", {class: "top-menu new-post"}) %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <%= yield %>
+</body>
+
 </html>

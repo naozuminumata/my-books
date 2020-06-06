@@ -1,0 +1,8 @@
+{
+  "ruby.intellisense": "rubyLocate",
+  "ruby.useLanguageServer": true,
+  "ruby.lint": {
+    "rufo": true
+  },
+  "ruby.format": "rufo",
+}

@@ -1,0 +1,20 @@
+<div class="new">
+  <div class="posts_top">
+    <p>ログイン</p>
+  </div>
+  <div class="new_container">
+    <div class="form-error">
+      <%= @error_message %>
+    </div>
+    <%= form_with url: "/login" do |f| %>
+      <p class="midashi">E-mail</p>
+      <input type="text" class="form-control" name="email" value="<%= @email%>">
+      <p class="midashi">パスワード</p>
+      <input type="password" class="form-control" name="password" value="<%= @password%>">
+      <%= f.submit "送信"%>
+    <%end%>
+  </div>
+  <div class="return-top">
+    <a href="/posts/index">トップ画面に戻る</a>
+  </div>
+</div>

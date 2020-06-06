@@ -1,3 +1,28 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.new{
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid gray;
+}
+
+.posts_top{
+    background-color: #323A40;
+    text-align: center;
+    color: white;
+    padding: 6px;
+}
+
+.new_container{
+    padding: 20px;
+}
+
+.midashi{
+    padding: 0.25em 0.5em;
+    margin-top: 20px;
+    color: #494949;
+    background: transparent;
+    border-left: solid 5px #7db4e6;
+}
+
+.form-error{
+    color: red;
+}
