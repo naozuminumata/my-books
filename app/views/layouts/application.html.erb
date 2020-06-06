@@ -17,38 +17,9 @@
 </head>
 
 <body>
-  <div class="top-wrapper">
-    <div class="top-message flex space">
-      <div class="top-left">
-        <% crrent_user = User.find_by(id: session[:user_id]) %>
-        <% if crrent_user %>
-        <p class="smaile">
-          こんにちは、<%= link_to("/users/#{@current_user.id}/show",{class: "current-user"}) do %>
-          <%= @current_user.name %>
-          <%end%>さん！
-        </p>
-        <% else %><p class="smile">こんにちは、ゲストさん！</p>
-        <% end %>
-      </div>
-      <ul class="top-right">
-        <% if @current_user %>
-        <li>
-          <%= link_to("新規投稿", "/posts/new", {class: "top-menu new-post"}) %>
-        </li>
-        <li>
-          <%= link_to("ログアウト", "/logout", {class: "top-menu top-logout",method: :post}) %>
-        </li>
-        <% else %>
-        <li>
-          <%= link_to("ログイン","/login", {class: "top-menu login"}) %>
-        </li>
-        <li>
-          <%= link_to("新規ユーザー登録", "/signup", {class: "top-menu new-post"}) %>
-        </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
+  <header>
+    <%= render partial: "layouts/navbar_header" %>
+  </header>
   <%= yield %>
 </body>
 
