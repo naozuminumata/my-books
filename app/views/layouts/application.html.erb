@@ -20,7 +20,10 @@
   <header>
     <%= render partial: "layouts/navbar_header" %>
   </header>
-  <%= yield %>
+  <main>
+    <%= render partial: "layouts/flash" %>
+    <%= yield %>
+  </main>
 </body>
 
 </html>
