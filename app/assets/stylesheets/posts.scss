@@ -3,6 +3,29 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @charset "utf-8";
 
+* {
+  box-sizing: border-box;
+}
+
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
+body{
+  display: block;
+}
+
+a{
+  text-decoration: none;
+  padding-bottom: 1px;
+  color: inherit;
+  cursor: pointer;
+}
+
 .flash {
   background-color: #FF9872;
   color: #EEEEEE;
@@ -22,10 +45,6 @@
   text-align: center;
   color: white;
   padding: 6px;
-}
-
-.current-user {
-  color: #EEEEEE;
 }
 
 .top-comment {
@@ -88,6 +107,7 @@
 
 .btn {
   display: inline-block;
+  text-decoration: none;
   width: 100%;
   text-align: center;
   padding: 20px;
@@ -114,6 +134,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.content-edit {
+  margin-right: 10px;
+  font-size: 16px;
 }
 
 .content-wrapper {
@@ -148,4 +173,94 @@
 
 .form-error {
   color: red;
+}
+
+.show {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.show-image {
+  text-align: center;
+}
+
+.show-image img {
+  width: 60%;
+}
+
+.book-title-show {
+  margin-top: 10px;
+}
+
+.buy {
+  text-align: center;
+}
+
+.buy a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-stitch {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;
+  color: #FFF;
+  border-radius: 4px;
+  box-shadow: 0px 0px 0px 5px #668ad8;
+  border: dashed 1px #FFF;
+  margin: 15px 0;
+  width: 70%;
+}
+
+.btn-stitch:hover {
+  border: dotted 1px #FFF;
+}
+
+.post-user {
+  margin: 10px 0;
+}
+
+.post-time {
+  font-size: 14px;
+}
+
+.post-review {
+  padding: 40px 20px;
+  background-color: #F8F9FA;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.twitter-link {
+  margin-top: 30px;
+}
+
+.flex {
+  display: flex;
+}
+
+.space {
+  justify-content: space-between;
+}
+
+.flex-right {
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
 }
