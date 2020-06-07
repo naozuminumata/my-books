@@ -1,2 +1,28 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="show">
+  <div class="show-image">
+    <img src="http://images-jp.amazon.com/images/P/<%= @post.isbn_code %>.09.LZZZZZZZ">
+  </div>
+  <div class="book-title-show">
+    <p><%= @post.title %></p>
+  </div>
+  <div class="buy">
+    <a href="<%= @post.amazon_url %>" class="btn-stitch" target="_blank">購入ページへ</a>
+  </div>
+  <div class="post-user flex space">
+    <p class="bold"><%= @user.name %></p>
+    <p class="post-time"><%= @post.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+  </div>
+  <div class="post-review">
+    <p><%= @post.review %></p>
+  </div>
+  <div class="twitter-link">
+    <%= link_to("#{@user.name}","/users/#{@user.id}/show") %>さんの投稿一覧を見る
+  </div>
+
+  <% if @post.user_id == @current_user.id %>
+  <ul class="flex flex-right">
+    <li class="content-edit"><%= link_to("編集","/posts/#{@post.id}/edit") %></li>
+    <li class="content-edit"><%= link_to("削除","/posts/#{@post.id}/destroy",{method: "post"}) %></li>
+  </ul>
+  <% end %>
+</div>
