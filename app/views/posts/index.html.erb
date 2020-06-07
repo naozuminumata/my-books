@@ -1,18 +1,30 @@
 <div class="top-comment">
-  <div class="ribbon6">
-    <h3>あなたの読んだ本に対して思ったこと、感じたことを綴ってみよう</h3>
-  </div>
-
-  <div class="box16">
-    <p>英語の学習に役立った参考書<br>影響を受けた自己啓発本<br>好きな武将が主役の歴史小説<br>なんでもOK！</p>
+  <div class="ribbon11-wrapper">
+    <h3 class="ribbon11">読んだ本に対する思いを綴ろう</h3>
+    <p class="ribbon11-detail">英語の学習に役立った参考書<br>影響を受けた自己啓発本<br>好きな武将が主役の歴史小説<br>なんでもOK！</p>
   </div>
 
   <div class="new-post">
     <%= link_to("最近読んだ一冊を投稿","/posts/new", {class: "btn-gradient-3d-simple"}) %>
   </div>
 </div>
-<% @posts.each do |post| %>
-<p>
-  <%= link_to(post.title, "/posts/#{post.id}")%>
-</p>
-<%end%>
+<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <%= link_to("/posts/#{post.id}") do %>
+      <div class="main-contents">
+        <div class="main-image">
+          <img src="http://images-jp.amazon.com/images/P/<%= post[:isbn_code] %>.09.LZZZZZZZ">
+        </div>
+        <div class="content-wrapper">
+          <div class="book-title">
+            <p><%= link_to(post.title, "/posts/#{post.id}")%></p>
+          </div>
+        </div>
+      </div>
+      <%end%>
+    </div>
+    <%end%>
+  </div>
+</div>

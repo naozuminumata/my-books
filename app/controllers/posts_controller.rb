@@ -25,7 +25,10 @@ class PostsController < ApplicationController
       title: params[:title],
       rating: params[:rating],
       review: params[:review],
-      share: params[:share]
+      amazon_url: params[:amazon_url],
+      isbn_code: params[:isbn_code],
+      share: params[:share],
+      user_id: @current_user.id
     )
 
     if @post.save

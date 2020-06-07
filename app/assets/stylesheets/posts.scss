@@ -1,57 +1,151 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
 @charset "utf-8";
 
-* {
-    box-sizing: border-box;
-}
-
 .flash {
-    background-color: #FF9872;
-    color: #EEEEEE;
-    text-align: center;
-    font-size: 18px;
-    padding: 10px;
+  background-color: #FF9872;
+  color: #EEEEEE;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
 }
 
 .new {
-    max-width: 600px;
-    margin: 0 auto;
-    border: 1px solid gray;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid gray;
 }
 
 .posts_top {
-    background-color: #323A40;
-    text-align: center;
-    color: white;
-    padding: 6px;
+  background-color: #323A40;
+  text-align: center;
+  color: white;
+  padding: 6px;
 }
 
-.ribbon6 {
-    display: inline-block;
-    position: relative;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-    padding: 7px 20px;
-    font-size: 18px;
-    background: rgb(228, 184, 213);
-    color: #FFF;
-    box-sizing: border-box;
-    box-shadow: 0 2px 2px #df898940;
-    margin: 30px 0 20px 0;
+.current-user {
+  color: #EEEEEE;
+}
+
+.top-comment {
+  text-align: center;
+}
+
+.ribbon11-wrapper {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  padding: 10px 0;
+  width: 310px;
+  background: #f1f1f1;
+}
+
+.ribbon11 {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 0 0 0 -20px;
+  width: calc(100%+20px);
+  font-size: 22px;
+  color: white;
+  background: #70c7ff;
+}
+
+.ribbon11:before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px #6eb3e0;
+}
+
+.ribbon11-detail {
+  margin: 7px 0 0 0;
+}
+
+.btn-gradient-3d-simple {
+  display: inline-block;
+  padding: 0.5em 3em;
+  margin: 20px 0;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #5e7fca;
+}
+
+.btn-gradient-3d-simple:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  margin: 20px 0;
+  border: 2px solid gray;
+  border-radius: 100px;
+}
+
+.submit_btn {
+  font-size: 9rem;
+  border-radius: 100px;
+  background-color: white;
+  border: 2px solid gray;
+  color: #143940;
+  font-weight: 600;
+  padding: 14px 120px;
+}
+
+.main-contents {
+  margin-top: 20px;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content-wrapper {
+  padding: 15px;
+  overflow: hidden;
+}
+
+.book-title {
+  margin: 10px 0;
 }
 
 .new_container {
-    padding: 20px;
+  padding: 20px;
 }
 
 .midashi {
-    padding: 0.25em 0.5em;
-    margin-top: 20px;
-    color: #494949;
-    background: transparent;
-    border-left: solid 5px #7db4e6;
+  padding: 0.25em 0.5em;
+  margin-top: 20px;
+  color: #494949;
+  background: transparent;
+  border-left: solid 5px #7db4e6;
+}
+
+.hosoku {
+  margin: 10px 0;
+}
+
+.isbn-image {
+  width: 200px;
+  margin-top: 10px;
 }
 
 .form-error {
-    color: red;
+  color: red;
 }

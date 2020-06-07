@@ -15,14 +15,21 @@
     <p class="midashi">本のタイトル</p>
     <input type="text" class="form-control" name="title" value="<%= @post.title %>">
 
+    <p class="midashi">AmazonのURL</p>
+    <input type="text" class="form-control" name="amazon_url" value="<%= @post.amazon_url %>">
+
+    <p class="midashi">ISBN/ASINコード</p>
+    <input type="text" class="form-control" name="isbn_code" value="<%= @post.isbn_code %>">
+
+    <div class="hosoku">
+      <p>※Amazonページの下部の登録情報に記載されているISBNコードを記入して下さい。</p>
+      <img src="/assets/isbn.png" class="isbn-image">
+    </div>
+
     <p class="midashi">コメント</p>
     <textarea class="form-control" rows="5" name="review"><%= @post.review %></textarea>
 
     <button type="submit" class="btn btn-primary submit_btn">投稿</button>
     <% end %>
-  </div>
-
-  <div class="return-top">
-    <%= link_to("トップに戻る","/posts/index") %>
   </div>
 </div>
