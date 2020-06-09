@@ -16,14 +16,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(
-      name: params[:name],
-      email: params[:email],
-      password_digest: params[:password_digest]
-    )
+    @user = User.new(user_params)
+
     if @user.save
       session[:user_id] = @user.id
-      redirect_to("/users/##{@user.id}/show")
+      redirect_to("/users/#{@user.id}/show")
     else
       render("/users/new")
     end
@@ -102,6 +99,12 @@ class UsersController < ApplicationController
         render("/posts/index")
       end
     end
+  end
+
+  private
+
+  def user_params
+    params.permit(:name, :email, :password, :password_confirmation)
   end
 
 end
