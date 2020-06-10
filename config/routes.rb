@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post "users/create" => "users#create"
   get "users/:id/show" => "users#show"
   get "users/:id/edit" => "users#edit"
-  get "users/:id/update" => "users#update"
+  post "users/:id/update" => "users#update"
 
   get "posts/index" => "posts#index"
   get "posts/new" => "posts#new"

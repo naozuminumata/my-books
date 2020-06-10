@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_063256) do
+ActiveRecord::Schema.define(version: 2020_06_09_232722) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_06_07_063256) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.string "amazon_url", limit: 500
+    t.string "amazon_url", limit: 700
     t.string "isbn_code"
   end
 

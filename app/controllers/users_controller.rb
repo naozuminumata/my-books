@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by(id: params[:id])
-    @user.name = params[:name]
+    @user.name = params[:user_name]
     @user.email = params[:email]
     if @user.save
       flash[:notice] = "ユーザー情報を編集しました"

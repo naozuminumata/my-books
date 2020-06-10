@@ -1,0 +1,22 @@
+<div class="new">
+  <div class="posts_top">
+    <p>ユーザー情報編集</p>
+  </div>
+
+  <div class="new_container">
+    <% @user.errors.full_messages.each do |message| %>
+    <div class="form-error">
+      <%= message %>
+    </div>
+    <% end %>
+    <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
+    <p class="midashi">ユーザー名</p>
+    <input type="text" class="form-control" name="user_name" value="<%= @user.name %>">
+
+    <p class="midashi">E-mail</p>
+    <input type="text" class="form-control" name="email" value="<%= @user.email %>">
+
+    <button type="submit" class="btn btn-primary submit_btn">編集する</button>
+    <% end %>
+  </div>
+</div>
