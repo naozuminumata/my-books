@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   # root to: 'posts#index'
   # resources :posts
+  post "likes/:post_id/create" => "likes#create"
+  post "likes/:post_id/destroy" => "likes#destroy"
 
   get "login" => "users#login_form"
   post "login" => "users#login"
