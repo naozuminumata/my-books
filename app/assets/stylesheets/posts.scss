@@ -15,11 +15,11 @@
   transition: none !important;
 }
 
-body{
+body {
   display: block;
 }
 
-a{
+a {
   text-decoration: none;
   padding-bottom: 1px;
   color: inherit;
@@ -146,6 +146,11 @@ a{
   overflow: hidden;
 }
 
+.left-container {
+  float: left;
+  margin-top: 2px;
+}
+
 .book-title {
   margin: 10px 0;
 }
@@ -237,6 +242,18 @@ a{
 
 .twitter-link {
   margin-top: 30px;
+}
+
+.like {
+  margin-top: 25px;
+}
+
+.like-btn-unlike {
+  color: violet;
+}
+
+.like-btn {
+  color: gray;
 }
 
 .flex {
