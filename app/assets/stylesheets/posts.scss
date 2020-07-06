@@ -151,6 +151,11 @@ a {
   margin-top: 2px;
 }
 
+.comment {
+  float: left;
+  margin: 2px 12px;
+}
+
 .book-title {
   margin: 10px 0;
 }
@@ -241,11 +246,13 @@ a {
 }
 
 .twitter-link {
-  margin-top: 30px;
+  margin-top: 20px;
+  float: right;
 }
 
 .like {
-  margin-top: 25px;
+  float: left;
+  margin: 20px 10px;
 }
 
 .like-btn-unlike {

@@ -1,0 +1,4 @@
+$('.slide_<%= @post.id %>').html("<%= j(render 'comments/comment', comments: @comments) %>");
+$('.form_<%= @post.id %>').html("<%= j(render 'comments/form', comment: @comment) %>");
+$('.content_<%=@post.id %>').val("");
+$('.slide_<%= @post.id %>').scrollTop($('.slide_<%= @post.id %>').get(0).scrollHeight);

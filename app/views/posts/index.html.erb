@@ -33,6 +33,12 @@
             <% end %>
             <%= post.like_count %>
           </div>
+          <div class="comment">
+            <%= link_to post_comments_path(post.id), remote: true do %>
+            <span class="glyphicon glyphicon-comment" aria-hidden="true"><%= post.comment_count %></span>
+            <i class="fa fa-comments" aria-hidden="true"></i>
+            <% end %>
+          </div>
         </div>
       </div>
       <%end%>

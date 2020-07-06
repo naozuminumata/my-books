@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :email, {presence: true}
 
   has_many :likes
+  has_many :comments
   
   def posts
     Post.where(user_id: self.id)
