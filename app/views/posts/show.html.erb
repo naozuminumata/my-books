@@ -27,6 +27,14 @@
     <% end %>
     <%= @likes_count %>
   </div>
+  <div class="like">
+    <%= link_to(post_comments_path(@post.id), {id: "opnbtn", class:"btn-opn_#{@post.id}", remote: true}) do %>
+    <span class="fa fa-comments" aria-hidden="true"></span>
+    <div class="btn-cls_#{@post.id}" value="#{@post.id}" id="clsbtn">
+      <span class="fa fa-window-close" aria-hidden="true"></span>
+    </div>
+    <% end %>
+  </div>
   <div class="twitter-link">
     <%= link_to("#{@user.name}","/users/#{@user.id}/show") %>さんの投稿一覧を見る
   </div>
