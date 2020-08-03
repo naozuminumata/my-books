@@ -3,6 +3,6 @@ $('.form_<%= @post.id %>').html("<%= j(render 'comments/form') %>");
 
 var val = <%= @post.id %>;
 $('.comment_form_' + val ).slideDown();
-$('.slide_'+ val).scrollTop($('.slide_'+ val).get(0).scrollHeight);
 $('.btn-opn_' + val).hide();
-$('.btn-cls_' + val).css('display','inline') ; 
+$('.btn-cls_' + val).css('display','inline');
+alert('indexアクション');

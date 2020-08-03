@@ -12,7 +12,23 @@
     <p class="bold"><%= @user.name %></p>
     <p class="post-time"><%= @post.created_at.strftime("%Y-%m-%d %H:%M") %></p>
   </div>
-  <div class="post-review">
+
+  <h6 class="mb-3">評価：<%= @post.rating %>点　
+    <span id="star-rate-<%= @post.id %>"></span>
+  </h6>
+  <script>
+    $('#star-rate-<%= @post.id %>').raty({
+      size: 36,
+      starOff: "<%= asset_path 'star-off.png' %>",
+      starOn: "<%= asset_path 'star-on.png' %>",
+      starHalf: "<%= asset_path 'star-half.png' %>",
+      half: true,
+      readOnly: true,
+      score: "<%= @post.rating %>",
+    });
+  </script>
+
+  <div class="post-review pos-col">
     <p><%= @post.review %></p>
   </div>
   <div class="like">
@@ -27,22 +43,33 @@
     <% end %>
     <%= @likes_count %>
   </div>
-  <div class="like">
-    <%= link_to(post_comments_path(@post.id), {id: "opnbtn", class:"btn-opn_#{@post.id}", remote: true}) do %>
-    <span class="fa fa-comments" aria-hidden="true"></span>
-    <div class="btn-cls_#{@post.id}" value="#{@post.id}" id="clsbtn">
-      <span class="fa fa-window-close" aria-hidden="true"></span>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-2">
+      <div class="comment comment_form_#{@post.id}" id="comment"></div>
+      <div class="slide slide_#{@post.id}" value="#{@post.id}" style="height:#{comment_height(@post.comment_count)}px"></div>
+      <div class="form form_#{@post.id}"></div>
+      <div class="menu2">
+        <%= link_to(post_comments_path(@post.id), {id: "opnbtn", class:"btn-opn_#{@post.id}", remote: true}) do %>
+        <div class="modal fade" id="comment-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"></div>
+        <span class="fa fa-comments" aria-hidden="true">
+          <%= @post.comment_count %>
+        </span>
+        <div class="btn-cls_#{@post.id}" value="#{@post.id}" id="clsbtn">
+          <span class="fa fa-window-close" aria-hidden="true">
+            <%= @post.comment_count %>
+          </span>
+        </div>
+        <% end %>
+      </div>
     </div>
-    <% end %>
   </div>
   <div class="twitter-link">
     <%= link_to("#{@user.name}","/users/#{@user.id}/show") %>さんの投稿一覧を見る
+    <% if @post.user_id == @current_user.id %>
+    <ul class="flex flex-right">
+      <li class="content-edit"><%= link_to("編集","/posts/#{@post.id}/edit") %></li>
+      <li class="content-edit"><%= link_to("削除", "/posts/#{@post.id}/destroy", method: "post", data: {confirm: '削除しますか？'}) %></li>
+    </ul>
+    <% end %>
   </div>
-
-  <% if @post.user_id == @current_user.id %>
-  <ul class="flex flex-right">
-    <li class="content-edit"><%= link_to("編集","/posts/#{@post.id}/edit") %></li>
-    <li class="content-edit"><%= link_to("削除","/posts/#{@post.id}/destroy",method: "post", data: {confirm: '削除しますか？'}) %></li>
-  </ul>
-  <% end %>
 </div>

@@ -1,0 +1,8 @@
+<%= form_for @comment,url: post_comments_path(@post.id) ,remote: true do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+<%= f.text_field :content,placeholder:"コメントを入力",class: "comment-content content_#{@post.id}"%>
+<%= hidden_field_tag :post_id, @post.id %>
+<div class="btn-parent">
+  <%= f.submit 'コメント', class: "comu btn btn-primary" %>
+</div>
+<%end%>

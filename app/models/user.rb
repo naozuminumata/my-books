@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :likes
   has_many :comments
+
+  mount_uploader :image, ImageUploader
   
   def posts
     Post.where(user_id: self.id)

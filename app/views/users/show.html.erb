@@ -18,8 +18,8 @@
     <div class="col-md-4 col-sm-6 col-xs-6">
       <%= link_to("/posts/#{post.id}") do %>
       <div class="main-contents">
-        <div class="main-image">
-          <img src="http://images-jp.amazon.com/images/P/<%= post[:isbn_code] %>.09.LZZZZZZZ">
+        <div class="card-main-image-wrap">
+          <img class="main-image" src="http://images-jp.amazon.com/images/P/<%= post[:isbn_code] %>.09.LZZZZZZZ">
         </div>
         <div class="content-wrapper">
           <div class="book-title">

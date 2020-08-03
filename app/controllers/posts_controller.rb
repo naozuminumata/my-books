@@ -22,20 +22,24 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(
-      title: params[:title],
-      rating: params[:rating],
-      review: params[:review],
-      amazon_url: params[:amazon_url],
-      isbn_code: params[:isbn_code],
-      share: params[:share],
-      user_id: @current_user.id
-    )
+    # @post = Post.new(
+    #   title: params[:title],
+    #   rating: params[:rating],
+    #   review: params[:review],
+    #   amazon_url: params[:amazon_url],
+    #   isbn_code: params[:isbn_code],
+    #   share: params[:share],
+    #   user_id: @current_user.id
+    # )
+    # current_user.posts.build(micropost_params)
+    @post = @current_user.posts.new(post_params)
+    @post.user_id = @current_user.id
+    binding.pry
 
     if @post.save
       redirect_to("/posts/index")
     else
-      render("/posts/index")
+      render :new
     end
   end
 
@@ -70,6 +74,12 @@ class PostsController < ApplicationController
       flash[:notice] = "権限がありません"
       redirect_to("/posts/index")
     end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :rating, :review, :amazon_url, :isbn_code, :share)
   end
 
 end

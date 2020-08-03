@@ -1,0 +1,14 @@
+<% if object.errors.any? %>
+<div id="error_explanation">
+  <div class="alert alert-danger">
+    <p>送信内容に</p>
+    <%= pluralize(object.errors.count, "箇所エラーがあります") %>
+    <p>.</p>
+    <ul>
+      <% object.errors.full_messages.each do |msg| %>
+      <li> <%= msg%></li>
+      <%end%>
+    </ul>
+  </div>
+</div>
+<%end%>

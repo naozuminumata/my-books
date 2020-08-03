@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
 
+  def new
+    @comment = Comment.new
+  end
+  
   def create
     @comment = @current_user.comments.build(comment_params)
     @post = Post.find(params[:post_id])
@@ -8,7 +12,17 @@ class CommentsController < ApplicationController
     @comments = Comment.where(post_id: params[:post_id])
 
     @comment.save
-    respond_to :js
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @user }
+        format.js { @status = "success"}
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.js { @status = "fail" }
+      end
+    end
   end
 
   def edit
@@ -36,7 +50,10 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @comments = Comment.where(post_id: params[:post_id])
     @post = Post.find(params[:post_id])
-    respond_to :js
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private
