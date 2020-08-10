@@ -9,21 +9,49 @@
       <%= message %>
     </div>
     <% end %>
-    <%= form_tag("/users/create") do %>
+    <%= form_with url: "/users/create", model: @user, local: true do |f| %>
 
     <p class="midashi">ユーザー名</p>
-    <input type="text" class="form-control" name="name" value="<%= @user.name %>">
+    <%= f.text_field :name, class: 'form-control' %>
 
     <p class="midashi">E-mail</p>
-    <input type="text" class="form-control" name="email" value="<%= @user.email %>">
+    <%= f.text_field :email, class: 'form-control' %>
 
     <p class="midashi">パスワード</p>
-    <input type="password" class="form-control" name="password" value="<%= @user.password %>">
+    <%= f.password_field :password, class: 'form-control' %>
 
     <p class="midashi">パスワード(確認)</p>
-    <input type="password" class="form-control" name="password_confirmation" value="<%= @user.password_confirmation %>">
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-    <button type="submit" class="btn btn-primary submit_btn">登録</button>
+    <p class="midashi">プロフィール文</p>
+    <%= f.text_area :profile, class: "form-control", size: "100x5" %>
+
+    <p class="midashi">画像</p>
+    <%= f.file_field :image, id: "image", name: "image", accept:"image/*" %>
+    <span style="color: #ff0000;" data-mce-style="color: #ff0000;">
+      <div><img id="thumbnail" src="/assets/default.jpg" size='100x100' class="trim-image-to-circle-thumbnail"></div>
+    </span>
+
+    <script>
+      $('#image').change(function() {
+        if (this.files.length > 0) {
+          // 選択されたファイル情報を取得
+          var file = this.files[0];
+
+          // readerのresultプロパティに、データURLとしてエンコードされたファイルデータを格納
+          var reader = new FileReader();
+          reader.readAsDataURL(file);
+
+          reader.onload = function() {
+            $('#thumbnail').attr('src', reader.result);
+          }
+        }
+      });
+    </script>
+
+    <%= f.submit "Create my account", class: "btn btn-primary submit_btn" %>
+
+
     <% end %>
   </div>
 </div>

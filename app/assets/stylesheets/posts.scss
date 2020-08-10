@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/earlyaccess/notosansjapanese.css');
 
 * {
   box-sizing: border-box;
@@ -36,7 +37,7 @@ a {
   top: -13px;
   left: 10px;
   padding: 0 9px;
-  line-height: 1;
+  line-height: 0;
   font-size: 19px;
   background: #FFF;
   color: #95ccff;
@@ -177,7 +178,8 @@ a {
 }
 
 .content-edit {
-  margin-right: 10px;
+  display: block;
+  margin: 0 0 0 auto;
   font-size: 16px;
 }
 
@@ -237,6 +239,10 @@ a {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
+}
+
+.show-parts {
+  text-align: center;
 }
 
 .show-image {
@@ -346,12 +352,22 @@ a {
 
 }
 
+.edit-btn {
+  display: block;
+  margin: 0 0 0 auto;
+}
+
 .bold {
   font-weight: bold;
 }
 
 .pos-name {
   margin-top: 20px;
+}
+
+.name {
+  font-size: 23px;
+  font-family: "Noto Sans Japanese";
 }
 
 .pos-menu {
@@ -418,6 +434,36 @@ a {
 .box18 p {
   margin: 0;
   padding: 0;
+}
+
+.user_image {
+  width: 20px;
+  height: 100%;
+  margin-right: 10px;
+}
+
+.trim-image-to-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-position: center center;
+  margin-right: 10px;
+}
+
+.trim-image-to-circle-thumbnail {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-position: center center;
+  margin: 20px 10px;
+}
+
+.trim-image-to-circle-thumbnail-show {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-position: center center;
+  margin: 20px 10px;
 }
 
 ul {

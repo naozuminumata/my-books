@@ -34,7 +34,6 @@ class PostsController < ApplicationController
     # current_user.posts.build(micropost_params)
     @post = @current_user.posts.new(post_params)
     @post.user_id = @current_user.id
-    binding.pry
 
     if @post.save
       redirect_to("/posts/index")

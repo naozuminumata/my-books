@@ -16,6 +16,32 @@
     <p class="midashi">E-mail</p>
     <input type="text" class="form-control" name="email" value="<%= @user.email %>">
 
+    <p class="midashi">プロフィール文</p>
+    <textarea rows="3" cols="60" class="form-control" name="profile" value="<%= @user.profile %>"><%= @user.profile %></textarea>
+
+    <p class="midashi">画像</p>
+    <input type="file" id="image" name="image" accept="image/*">
+    <span style="color: #ff0000;" data-mce-style="color: #ff0000;">
+      <div><img id="thumbnail" src="<%= @user.image %>" size='100x100' class="trim-image-to-circle-thumbnail"></div>
+    </span>
+
+    <script>
+      $('#image').change(function() {
+        if (this.files.length > 0) {
+          // 選択されたファイル情報を取得
+          var file = this.files[0];
+
+          // readerのresultプロパティに、データURLとしてエンコードされたファイルデータを格納
+          var reader = new FileReader();
+          reader.readAsDataURL(file);
+
+          reader.onload = function() {
+            $('#thumbnail').attr('src', reader.result);
+          }
+        }
+      });
+    </script>
+
     <button type="submit" class="btn btn-primary submit_btn">編集する</button>
     <% end %>
   </div>
