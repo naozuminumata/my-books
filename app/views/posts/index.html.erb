@@ -14,14 +14,34 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
       <%= link_to("/posts/#{post.id}") do %>
       <div class="main-contents">
-        <div class="main-image">
-          <img src="http://images-jp.amazon.com/images/P/<%= post[:isbn_code] %>.09.LZZZZZZZ">
+        <div class="card-main-image-wrap">
+          <img class="main-image" src="http://images-jp.amazon.com/images/P/<%= post[:isbn_code] %>.09.LZZZZZZZ">
         </div>
         <div class="content-wrapper">
           <div class="book-title">
             <p><%= link_to(post.title, "/posts/#{post.id}")%></p>
           </div>
+          <div class="box18">
+            <h6 class="mb-3">
+              <span id="star-rate-<%= post.id %>"></span>
+            </h6>
+            <script>
+              $('#star-rate-<%= post.id %>').raty({
+                size: 36,
+                starOff: "<%= asset_path 'star-off.png' %>",
+                starOn: "<%= asset_path 'star-on.png' %>",
+                starHalf: "<%= asset_path 'star-half.png' %>",
+                half: true,
+                readOnly: true,
+                score: "<%= post.rating %>",
+              });
+            </script>
+            <div class="main-message">
+              <%= post[:review] %>
+            </div>
+          </div>
           <div class="left-container">
+            <%if @current_user.present? %>
             <% if Like.find_by(user_id: @current_user.id,post_id: post.id) %>
             <%= link_to("/likes/#{post.id}/destroy", {method: "post",class: "font"}) do %>
             <span class="fa fa-heart like-btn-unlike"></span>
@@ -32,7 +52,24 @@
             <% end %>
             <% end %>
             <%= post.like_count %>
+            <% else %>
+            <span class="fa fa-heart like-btn-unlike"></span>
+            <% if post.like_count == nil %>
+            0
+            <%else%>
+            <%= post.like_count %>
+            <% end %>
+            <% end %>
           </div>
+          <div class="right-container">
+            <% if post.user.image? %>
+            <%= image_tag post.user.image.url, :size =>'20x20', :class => "trim-image-to-circle" %>
+            <% else %>
+            <%= image_tag "default.jpg", :size =>'20x20', :class => "user_image" %>
+            <% end %>
+            <%= link_to(post.user.name, "/users/#{post.user.id}/show") %>さんの投稿
+          </div>
+
           <div class="comment">
             <%= link_to post_comments_path(post.id), remote: true do %>
             <span class="glyphicon glyphicon-comment" aria-hidden="true"><%= post.comment_count %></span>

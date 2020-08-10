@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
+    @user.image = params[:image]
     if @user.save
       session[:user_id] = @user.id
       redirect_to("/users/#{@user.id}/show")
@@ -34,6 +34,8 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @user.name = params[:user_name]
     @user.email = params[:email]
+    @user.profile = params[:profile]
+    @user.image = params[:image]
     if @user.save
       flash[:notice] = "ユーザー情報を編集しました"
       redirect_to("/users/#{@user.id}/show")
@@ -104,7 +106,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :profile)
   end
 
 end
