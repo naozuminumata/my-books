@@ -41,25 +41,9 @@
             </div>
           </div>
           <div class="left-container">
-            <%if @current_user.present? %>
-            <% if Like.find_by(user_id: @current_user.id,post_id: post.id) %>
-            <%= link_to("/likes/#{post.id}/destroy", {method: "post",class: "font"}) do %>
-            <span class="fa fa-heart like-btn-unlike"></span>
-            <% end %>
-            <% else %>
-            <%= link_to("/likes/#{post.id}/create", {method: "post",class: "font"}) do %>
-            <span class="fa fa-heart like-btn"></span>
-            <% end %>
-            <% end %>
-            <%= post.like_count %>
-            <% else %>
-            <span class="fa fa-heart like-btn-unlike"></span>
-            <% if post.like_count == nil %>
-            0
-            <%else%>
-            <%= post.like_count %>
-            <% end %>
-            <% end %>
+            <div id="likes_buttons_<%= post.id %>">
+              <%= render partial: 'likes/like', locals: { post: post} %>
+            </div>
           </div>
           <div class="right-container">
             <% if post.user.image? %>
