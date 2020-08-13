@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, {only: [:edit, :update]}
 
   def index
-    @user = User.all.order(created_at: :desc)
+    @all_ranks = User.find(Post.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
   end
 
   def show

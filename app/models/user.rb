@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :email, {presence: true}
   validates :profile, length: { in: 1..150 }
 
+  has_many :posts
   has_many :likes
   has_many :comments
 

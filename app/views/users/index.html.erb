@@ -1,2 +1,58 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="read_ranking">
+  <div class="table_group">
+    <table class="table table-striped">
+      <thead class="table-head text-white bg-dark">
+        <tr>
+          <th width=20% class="text-center">順位</th>
+          <th width=50%>ユーザー名</th>
+          <th width=30% class="text-center">読書量</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% rank_number = 0 %>
+        <% post_count = 0 %>
+        <% @all_ranks.each.with_index do |user, i|%>
+        <tr class="bg-white">
+          <td>
+            <%if i != 0 %>
+            <% if user.posts.count < post_count %>
+            <% rank_number += 1 %>
+            <% end %>
+            <% else %>
+            <% rank_number = 1 %>
+            <% end %>
+            <div class="caluculate_rank">
+              <% if rank_number == 1 %>
+              <img src="/assets/crown-gold.jpeg">
+              <% elsif rank_number == 2 %>
+              <img src="/assets/crown-silver.jpeg">
+              <% elsif rank_number == 3 %>
+              <img src="/assets/crown-bronze.jpeg">
+              <% else %>
+              <div class="number">
+                <h6><%= rank_number %></h6>
+              </div>
+              <% end %>
+              <% post_count = user.posts.count %>
+            </div>
+          </td>
+          <td>
+            <% if user.image? %>
+            <%= image_tag user.image.url, :size =>'20x20', :class => "trim-image-to-circle" %>
+            <%= link_to(user.name, "/users/#{user.id}/show", {class: "user_name"}) %>
+            <% else %>
+            <%= image_tag 'default.jpg', class: "no_user_image" %>
+            <%= link_to(user.name, "/users/#{user.id}/show", {class: "user_name"}) %>
+            <% end %>
+          </td>
+          <td>
+            <div class="text-center">
+              <h6><%= user.posts.count %></h6>
+            </div>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
