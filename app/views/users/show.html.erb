@@ -5,7 +5,11 @@
 
   <div class="new_container">
     <span id="image" style="color: #ff0000;" data-mce-style="color: #ff0000;">
+      <% if @user.image.present? %>
       <div class="show-parts"><img id="thumbnail" src="<%= @user.image %>" size='100x100' class="trim-image-to-circle-thumbnail-show"></div>
+      <% else %>
+      <div class="show-parts"><img id="thumbnail" src="/assets/default.jpg" size='100x100' class="trim-image-to-circle-thumbnail-show"></div>
+      <% end %>
     </span>
 
     <script>

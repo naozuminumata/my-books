@@ -22,7 +22,11 @@
     <p class="midashi">画像</p>
     <input type="file" id="image" name="image" accept="image/*">
     <span style="color: #ff0000;" data-mce-style="color: #ff0000;">
+      <% if @user.image.present? %>
       <div><img id="thumbnail" src="<%= @user.image %>" size='100x100' class="trim-image-to-circle-thumbnail"></div>
+      <% else %>
+      <div><img id="thumbnail" src="/assets/default.jpg" size='100x100' class="trim-image-to-circle-thumbnail"></div>
+      <% end %>
     </span>
 
     <script>
