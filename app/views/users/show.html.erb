@@ -70,16 +70,9 @@
             </div>
           </div>
           <div class="left-container">
-            <% if Like.find_by(user_id: @current_user.id,post_id: post.id) %>
-            <%= link_to("/likes/#{post.id}/destroy", {method: "post",class: "font"}) do %>
-            <span class="fa fa-heart like-btn-unlike"></span>
-            <% end %>
-            <% else %>
-            <%= link_to("/likes/#{post.id}/create", {method: "post",class: "font"}) do %>
-            <span class="fa fa-heart like-btn"></span>
-            <% end %>
-            <% end %>
-            <%= post.like_count %>
+            <div id="likes_buttons_<%= post.id %>">
+              <%= render partial: 'likes/like', locals: { post: post} %>
+            </div>
           </div>
           <div class="right-container">
             <% if post.user.image? %>
