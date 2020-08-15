@@ -1,6 +1,6 @@
 <div class="new">
   <div class="posts_top">
-    <p>投稿する</p>
+    <p>新規投稿</p>
   </div>
 
   <% @post.errors.full_messages.each do |message| %>
@@ -45,7 +45,7 @@
     <p class="midashi">レビュー</p>
     <%= f.text_area :review, class: 'form-control', rows: "5" %>
 
-    <%= f.submit "投稿", :class => "btn btn-primary" %>
+    <%= f.submit "投稿する", :class => "btn btn-primary" %>
 
     <% end %>
   </div>

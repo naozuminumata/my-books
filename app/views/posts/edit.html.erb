@@ -4,29 +4,44 @@
   </div>
 
   <div class="new_container">
-    <%= form_tag("/posts/#{@post.id}/update") do %>
-    <% @post.errors.full_messages.each do |message| %>
-    <div class="form-error">
-      <%= message %>
-    </div>
-    <% end %>
+    <%= form_for @post, url: "/posts/#{@post.id}/update", method: :post, local:true do |f| %>
+
     <p class="midashi">本のタイトル</p>
-    <input type="text" class="form-control" name="title" value="<%= @post.title %>">
+    <%= f.text_field :title, class: 'form-control' %>
 
     <p class="midashi">AmazonのURL</p>
-    <input type="text" class="form-control" name="amazon_url" value="<%= @post.amazon_url %>">
+    <%= f.text_field :amazon_url, class: 'form-control' %>
 
     <p class="midashi">ISBN/ASINコード</p>
-    <input type="text" class="form-control" name="isbn_code" value="<%= @post.isbn_code %>">
+    <%= f.text_field :isbn_code, class: 'form-control' %>
 
     <div class="hosoku">
-      <p>※Amazonページの登録情報に記載されているISBNコードを記入して下さい。</p>
+      <p>※Amazonページの下部の登録情報に記載されているISBNコードを記入して下さい。</p>
+      <img src="/assets/isbn.png" class="isbn-image">
     </div>
 
-    <p class="midashi">レビュー</p>
-    <textarea class="form-control" rows="5" name="review"><%= @post.review %></textarea>
+    <div class="midashi" id="star">
+      <%= f.label :rating, '評価 ', class:'col-md-2 col-form-label' %>
+      <%= f.hidden_field :rating, class: :review_star %>
+    </div>
 
-    <button type="submit" class="btn btn-primary submit_btn">編集する</button>
+    <script>
+      $('#star').raty({
+        size: 36,
+        starOff: "<%= asset_path 'star-off.png' %>",
+        starOn: "<%= asset_path 'star-on.png' %>",
+        starHalf: "<%= asset_path 'star-half.png' %>",
+        scoreName: 'post[rating]',
+        half: true,
+        score: "<%= @post.rating %>",
+      });
+    </script>
+
+    <p class="midashi">レビュー</p>
+    <%= f.text_area :review, class: 'form-control', rows: "5" %>
+
+    <%= f.submit "投稿する", :class => "btn btn-primary" %>
+
     <% end %>
   </div>
 </div>
