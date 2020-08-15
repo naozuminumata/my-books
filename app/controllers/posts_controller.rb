@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  protect_from_forgery
 
   before_action :authenticate_user,except: [:index]
   before_action :ensure_correct_user,{only: [:edit, :update, :destroy]}
@@ -47,12 +48,15 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find_by(id: params[:id])
-    @post.title = params[:title]
-    @post.review = params[:review]
-    @post.amazon_url = params[:amazon_url]
-    @post.isbn_code = params[:isbn_code]
-    if @post.save
+    @post = Post.find(params[:id])
+
+    # @post = Post.find_by(id: params[:id])
+    # @post.title = params[:title]
+    # @post.review = params[:review]
+    # @post.amazon_url = params[:amazon_url]
+    # @post.isbn_code = params[:isbn_code]
+    # @post.isbn_code = params[:rating]
+    if @post.update(post_params)
       flash[:notice] = "投稿を編集しました"
       redirect_to("/posts/index")
     else

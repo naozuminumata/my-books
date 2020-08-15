@@ -1,11 +1,12 @@
-<div class="top-comment">
-  <div class="ribbon11-wrapper">
-    <h3 class="ribbon11">読んだ本に対する思いを綴ろう</h3>
-    <p class="ribbon11-detail">英語の学習に役立った参考書<br>影響を受けた自己啓発本<br>好きな武将が主役の歴史小説<br>なんでもOK！</p>
-  </div>
-
-  <div class="new-post">
-    <%= link_to("最近読んだ一冊を投稿","/posts/new", {class: "btn-gradient-3d-simple"}) %>
+<div class="top_container">
+  <div class="content pt-5">
+    <h1 class="catch">読んだ本を記録、価値観をシェアしよう</h1>
+    <p class="lead pt-3 pb-2">あなただけの価値観をみんなに見てもらおう<br>あなただけの読書記録をつけよう</p>
+    <div class="btn_group pt-3">
+      <div class="new-post">
+        <%= link_to("最近読んだ一冊を投稿","/posts/new", {class: "btn-gradient-3d-simple"}) %>
+      </div>
+    </div>
   </div>
 </div>
 <div class="container">
@@ -21,7 +22,7 @@
           <div class="book-title">
             <p><%= link_to(post.title, "/posts/#{post.id}")%></p>
           </div>
-          <div class="box18">
+          <div v class="box18">
             <h6 class="mb-3">
               <span id="star-rate-<%= post.id %>"></span>
             </h6>
