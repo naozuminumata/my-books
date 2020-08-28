@@ -7,12 +7,15 @@
       <%= @error_message %>
     </div>
     <%= form_with url: "/login" do |f| %>
-      <p class="midashi">E-mail</p>
-      <input type="text" class="form-control" name="email" value="<%= @email%>">
-      <p class="midashi">パスワード</p>
-      <input type="password" class="form-control" name="password" value="<%= @password%>">
-      <%= f.submit "送信"%>
+    <p class="midashi">E-mail</p>
+    <input type="text" class="form-control" name="email" value="<%= @email%>">
+    <p class="midashi">パスワード</p>
+    <input type="password" class="form-control" name="password" value="<%= @password%>">
+    <%= f.submit "送信"%>
     <%end%>
+    <div class="guest_login">
+      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-warning btn-lg mt-3" %>
+    </div>
   </div>
   <div class="return-top">
     <a href="/posts/index">トップ画面に戻る</a>

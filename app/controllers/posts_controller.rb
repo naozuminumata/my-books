@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
-  protect_from_forgery
+  # protect_from_forgery
 
-  before_action :authenticate_user,except: [:index]
-  before_action :ensure_correct_user,{only: [:edit, :update, :destroy]}
+  # before_action :authenticate_user,except: [:index]
+  # before_action :ensure_correct_user,{only: [:edit, :update, :destroy]}
+
+  before_action :authenticate_user!, except: :index
   
   def index
     @posts = Post.all.order(created_at: :desc)
@@ -15,10 +17,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
-    if @current_user == nil
+    if user_signed_in?
+      @post = Post.new
+    else
       flash[:notice] = "ログインが必要です"
-      redirect_to("/login")
+      redirect_to(user_session_path, method: :post)
     end
   end
 
@@ -33,8 +36,8 @@ class PostsController < ApplicationController
     #   user_id: @current_user.id
     # )
     # current_user.posts.build(micropost_params)
-    @post = @current_user.posts.new(post_params)
-    @post.user_id = @current_user.id
+    @post = current_user.posts.new(post_params)
+    @post.user_id = current_user.id
 
     if @post.save
       redirect_to("/posts/index")

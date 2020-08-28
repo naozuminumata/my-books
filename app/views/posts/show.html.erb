@@ -42,7 +42,7 @@
     <%= image_tag "default.jpg", :size =>'20x20', :class => "user_image" %>
     <% end %>
     <%= link_to("#{@user.name}","/users/#{@user.id}/show") %>さんの投稿一覧を見る
-    <% if @post.user_id == @current_user.id %>
+    <% if @post.user_id == current_user.id %>
     <ul class="flex flex-right">
       <div class="btn-group" role="group" aria-label="Basic example">
         <li class="content-edit"><%= link_to("編集","/posts/#{@post.id}/edit", {class: "btn btn-secondary"}) %></li>

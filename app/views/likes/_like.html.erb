@@ -1,5 +1,5 @@
-<%if @current_user.present? %>
-<% if Like.find_by(user_id: @current_user.id,post_id: post.id) %>
+<%if user_signed_in? %>
+<% if Like.find_by(user_id: current_user.id,post_id: post.id) %>
 <%= link_to "/likes/#{post.id}/destroy", method: "post",class: "font", remote: true do %>
 <span class="fa fa-heart like-btn-unlike"></span>
 <% end %>
