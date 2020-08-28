@@ -1,14 +1,12 @@
 <%= stylesheet_link_tag "_users", :media => "all" %>
 
-<div class="form-error">
-  <%= @error_message %>
-</div>
 <div class="regist">
   <div class="card border-none mb-3 p-3 mx-auto">
     <div class="bg-transparent ml-2 mt-2">
       <h5>ログイン</h5>
       <div class="form_groups">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
         <div class="normal">
           <div class="form_group">
             <label>メールアドレス</label>
@@ -35,6 +33,6 @@
     </div>
   </div>
   <div class="btn_group">
-    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-warning btn-lg mt-3" %>
+    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-success btn-lg mt-3" %>
   </div>
 </div>

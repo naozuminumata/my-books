@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, {only: [:show, :edit, :update]}
-  # before_action :forbid_login_user, {only: [:new, :create, :login_form, :login]}
-  # before_action :ensure_correct_user, {only: [:edit, :update]}
 
   def index
     @all_ranks = User.find(Post.group(:user_id).order('count(user_id) desc').limit(20).pluck(:user_id))
