@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # root to: 'posts#index'
   # resources :posts
   post "likes/:post_id/create" => "likes#create"
   post "likes/:post_id/destroy" => "likes#destroy"
+
+  root 'posts#index'
 
   resources :posts, only: %i[new create destroy edit update index] do
     resources :comments, only: %i[create index new]
@@ -16,6 +23,7 @@ Rails.application.routes.draw do
   post "login" => "users#login"
   post "logout" => "users#logout"
   get "/auth/:provider/callback" => "users#twitter_create"
+  post '/users/guest_sign_in', to: 'users#new_guest'
 
   get "users/index" => "users#index"
   get "signup" => "users#new"

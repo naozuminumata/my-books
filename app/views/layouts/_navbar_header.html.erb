@@ -6,9 +6,9 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto align-items-center">
-      <% if @current_user %>
+      <% if user_signed_in? %>
       <li class="nav-item">
-        こんにちは、<%= link_to("/users/#{@current_user.id}/show",{class: "current-user"}) do %><%= @current_user.name %><%end%>さん！
+        こんにちは、<%= link_to("/users/#{current_user.id}/show") do %><%= current_user.name %><%end%>さん！
       </li>
       <% else %>
       <li class="nav-item">
@@ -18,21 +18,29 @@
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-item nav-link active ml-4 h6" rel="nofollow" href="/users/index">読書ランキング</a>
+        <%= link_to users_index_path, class: 'av-item nav-link active ml-4 h6' do%>
+        <i class="fas fa-signal icon"></i>読書ランキング
+        <% end %>
       </li>
-      <% if @current_user %>
+      <% if user_signed_in? %>
       <li class="nav-item">
         <a class="nav-item nav-link active ml-4 h6" rel="nofollow" href="/posts/new">新規投稿</a>
       </li>
       <li class="nav-item">
-        <a class="nav-item nav-link active ml-4 h6" rel="nofollow" data-method="post" href="/logout">ログアウト</a>
+        <%= link_to destroy_user_session_path, method: :delete, class: 'nav-item nav-link active ml-4 h6' do %>
+        <i class="fas fa-sign-out-alt icon"></i>ログアウト
+        <% end %>
       </li>
       <% else %>
       <li class="nav-item">
-        <a class="nav-item nav-link active ml-4 h6" href="/login">ログイン</a>
+        <%= link_to user_session_path, class: 'nav-item nav-link active ml-4 h6' do %>
+        <i class="fas fa-sign-out-alt icon"></i>ログイン
+        <% end %>
       </li>
       <li class="nav-item">
-        <a class="nav-item nav-link active ml-4 h6" href="/signup">新規ユーザー登録</a>
+        <%= link_to new_user_registration_path, class: 'nav-item nav-link active ml-4 h6' do %>
+        <i class="fas fa-user-plus icon"></i>新規登録
+        <% end %>
       </li>
       <% end %>
     </ul>

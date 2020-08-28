@@ -3,7 +3,7 @@ class LikesController < ApplicationController
   def create
     @path = Rails.application.routes.recognize_path(request.referer)
     @like = Like.new(
-      user_id: @current_user.id,
+      user_id: current_user.id,
       post_id: params[:post_id]
     )
     @like.save
@@ -15,7 +15,7 @@ class LikesController < ApplicationController
   def destroy
     @path = Rails.application.routes.recognize_path(request.referer)
     @like = Like.find_by(
-      user_id: @current_user.id,
+      user_id: current_user.id,
       post_id: params[:post_id]
     )
     @like.destroy
