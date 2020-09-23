@@ -6,6 +6,7 @@ set :application, 'my-books'
 
 # cloneするgitのレポジトリ
 set :repo_url, 'git@github.com:naozuminumata/my-books.git'
+keys: ['~/.ssh/mybooks.pem'] 
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'
@@ -23,7 +24,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :keep_releases, 5
 
 # rubyのバージョン
-set :rbenv_ruby, '2.1.3'
+set :rbenv_ruby, '2.6.6'
 
 #出力するログのレベル。
 set :log_level, :debug
