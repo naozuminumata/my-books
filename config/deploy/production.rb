@@ -2,7 +2,14 @@
 server '54.144.26.150', user: 'naozumi', roles: %w{app db web} 
 
 #デプロイするサーバーにsshログインする鍵の情報を記述
-set :ssh_options, keys: '~/.ssh/mybooks_key_rsa' 
+# set :ssh_options, keys: '~/.ssh/mybooks_key_rsa' 
+
+set :ssh_options, {
+  port: 22, #XXXにポート番号
+  keys: [File.expand_path('~/.ssh/mybooks_key_rsa')], #'~/.ssh/id_rsa'部分をローカル環境の鍵のパスに
+  forward_agent: true,
+  auth_methods: %w(publickey)
+}
 
 # server-based syntax
 # ======================
