@@ -2,7 +2,7 @@
 server '54.144.26.150', user: 'naozumi', roles: %w{app db web} 
 
 #デプロイするサーバーにsshログインする鍵の情報を記述
-set :ssh_options, keys: '~/.ssh/first_aws_rsa' 
+set :ssh_options, keys: '~/.ssh/mybooks_key_rsa' 
 
 # server-based syntax
 # ======================
