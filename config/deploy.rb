@@ -6,7 +6,7 @@ set :application, 'my-books'
 
 # cloneするgitのレポジトリ
 set :repo_url, 'git@github.com:naozuminumata/my-books.git'
-keys: ['~/.ssh/mybooks.pem'] 
+# keys: ['~/.ssh/mybooks.pem'] 
 
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'master'
