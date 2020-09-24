@@ -1,5 +1,5 @@
 # EC2サーバーのIP、EC2サーバーにログインするユーザー名、サーバーのロールを記述
-server '54.144.26.150', user: 'naozumi', roles: %w{app db web} 
+server '54.144.26.150', user: 'naozumi', roles: %w{app} 
 
 #デプロイするサーバーにsshログインする鍵の情報を記述
 # set :ssh_options, keys: '~/.ssh/mybooks_key_rsa' 
