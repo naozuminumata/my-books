@@ -351,7 +351,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activeadmin
+  activeadmin (= 2.7.0)
   bcrypt (~> 3.1.7)
   bcrypt_pbkdf
   bootsnap (>= 1.1.0)
@@ -385,7 +385,7 @@ DEPENDENCIES
   rails (~> 5.2.4, >= 5.2.4.2)
   rails-i18n
   rmagick
-  sass-rails (= 5.1.0)
+  sass-rails (~> 5.0)
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
