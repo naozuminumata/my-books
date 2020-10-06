@@ -41,14 +41,14 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
-group :development, :test do
- gem 'capistrano'
- gem 'capistrano-bundler'
- gem 'capistrano-rails'
- gem 'capistrano-rbenv'
- gem 'ed25519'
- gem 'bcrypt_pbkdf'
-end
+# group :development, :test do
+#  gem 'capistrano'
+#  gem 'capistrano-bundler'
+#  gem 'capistrano-rails'
+#  gem 'capistrano-rbenv'
+#  gem 'ed25519'
+#  gem 'bcrypt_pbkdf'
+# end
 
 group :production, :staging do
   gem "unicorn", "~> 5.4"
