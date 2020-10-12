@@ -45,7 +45,7 @@
             <label>画像</label>
             <%= f.file_field :image, id: "image", name: "image", accept:"image/*" %>
             <span style="color: #ff0000;" data-mce-style="color: #ff0000;">
-              <div><img id="thumbnail" src="/assets/default.jpg" size='100x100' class="trim-image-to-circle-thumbnail"></div>
+              <div><img id="thumbnail" src="<%= asset_path "default.jpg" %>" size='100x100' class="trim-image-to-circle-thumbnail"></div>
             </span>
           </div>
         </div>
