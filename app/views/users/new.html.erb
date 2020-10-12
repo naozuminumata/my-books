@@ -1,35 +1,11 @@
-<div class="new">
-  <div class="posts_top">
-    <p>新規ユーザー登録</p>
-  </div>
-
+<div class="new_mypage">
   <div class="new_container">
-    <% @user.errors.full_messages.each do |message| %>
-    <div class="form-error">
-      <%= message %>
-    </div>
-    <% end %>
-    <%= form_with url: "/users/create", model: @user, local: true do |f| %>
-
-    <p class="midashi">ユーザー名</p>
-    <%= f.text_field :name, class: 'form-control' %>
-
-    <p class="midashi">E-mail</p>
-    <%= f.text_field :email, class: 'form-control' %>
-
-    <p class="midashi">パスワード</p>
-    <%= f.password_field :password, class: 'form-control' %>
-
-    <p class="midashi">パスワード(確認)</p>
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-    <p class="midashi">プロフィール文</p>
-    <%= f.text_area :profile, class: "form-control", size: "100x5" %>
-
-    <p class="midashi">画像</p>
-    <%= f.file_field :image, id: "image", name: "image", accept:"image/*" %>
-    <span style="color: #ff0000;" data-mce-style="color: #ff0000;">
-      <div><img id="thumbnail" src="/assets/default.jpg" size='100x100' class="trim-image-to-circle-thumbnail"></div>
+    <span id="image" style="color: #ff0000;" data-mce-style="color: #ff0000;">
+      <% if @user.image.present? %>
+      <div class="show-parts"><img id="thumbnail" src="<%= @user.image %>" size='100x100' class="trim-image-to-circle-thumbnail-show"></div>
+      <% else %>
+      <div class="show-parts"><img id="thumbnail" src="<%= asset_path "default.jpg" %>" size='100x100' class="trim-image-to-circle-thumbnail-show"></div>
+      <% end %>
     </span>
 
     <script>
@@ -49,9 +25,32 @@
       });
     </script>
 
-    <%= f.submit "Create my account", class: "btn btn-primary submit_btn" %>
-
-
-    <% end %>
+    <p class="show-parts name"><%= @user.name %></p>
+    <p class="show-parts"><%= @user.profile %></p>
+    <ul class="flex flex-right">
+      <li class="content-edit"><%= link_to("プロフィールを編集","/users/#{@user.id}/edit", {class: "btn btn-primary"}) %></li>
+    </ul>
   </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <% @user.posts.each do |post| %>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <%= link_to("/posts/#{post.id}") do %>
+      <div class="main-contents">
+        <div class="card-main-image-wrap">
+          <img class="main-image" src="http://images-jp.amazon.com/images/P/<%= post[:isbn_code] %>.09.LZZZZZZZ">
+        </div>
+        <div class="content-wrapper">
+          <div class="book-title">
+            <p><%= link_to(post.title, "/posts/#{post.id}")%></p>
+          </div>
+          <div class="box18">
+            <h6 class="mb-3">
+              <span id="star-rate-<%= post.id %>"></span>
+            </h6>
+            <script>
+              $('#star-rate-<%= post.id %>').raty({
+                    size: 36,
+                    starOff: "<%= asset_path 'star-off.png' %>",
