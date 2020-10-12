@@ -134,7 +134,7 @@
   /*tablet用のcssを記述*/
   .top_container {
     text-align: center;
-    background-image: url("background.jpg");
+    background-image: image-url("background.jpg");
     height: 370px;
     background-size: cover;
     opacity: 1;
@@ -227,7 +227,7 @@
   /*pc用のcssを記述*/
   .top_container {
     text-align: center;
-    background-image: url("background.jpg");
+    background-image: image-url("background.jpg");
     height: 350px;
     background-size: cover;
     opacity: 1;
